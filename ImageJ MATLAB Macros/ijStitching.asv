@@ -1,0 +1,16 @@
+% Grid-wise stitching of ImageJ
+
+function ijStitching(tileDir, saveDir)
+
+xml = dir([tileDir, filesep, '*.xml']).name;
+
+opts = "type=[Positions from file] order=[Defined by image metadata] " + ...
+    "multi_series_file=[" + tilexml + "] fusion_method=[Linear Blending] " + ...
+    "regression_threshold=0.30 max/avg_displacement_threshold=2.50 " + ...
+    "absolute_displacement_threshold=3.50 increase_overlap=0 " + ...
+    "computation_parameters=[Save computation time (but use more RAM)] " + ...
+    "image_output=[Write to disk] output_directory=[" + saveDir + "]";
+
+ij.IJ.run("Grid/Collection stitching", opts)
+
+end
